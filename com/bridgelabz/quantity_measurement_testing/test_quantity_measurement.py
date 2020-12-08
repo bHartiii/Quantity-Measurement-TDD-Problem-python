@@ -71,3 +71,9 @@ def test_GivenFeetAndInchInstance_WhenCompared_IfFeetIs12TimesOfInches_ShouldRet
     inch = Inch(12)
     feet = Feet(1)
     assert feet == inch
+
+# checks if 1yd is equals to 36in or not
+def test_GivenYardAndInchInstance_WhenCompared_IfYardIs36TimesOfInches_ShouldReturnTrue():
+    inch = Inch(36)
+    yard = Yard(1)
+    assert yard == inch
