@@ -9,4 +9,5 @@ class Yard:
         if isinstance(other, Inch):
             if other.inch == self.yard * 36:
                 return True
+
         return False

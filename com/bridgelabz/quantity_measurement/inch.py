@@ -4,3 +4,4 @@ class Inch:
 
     def __eq__(self, other):
         return self.inch == other
+
