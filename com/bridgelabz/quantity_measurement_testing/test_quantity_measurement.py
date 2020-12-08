@@ -62,4 +62,4 @@ def test_GivenTwoYardInstancesButDifferentValues_WhenCompared_ShouldReturnFalse(
 def test_GivenFeetAndYardInstance_WhenCompared_IfYardIsThriceOfFeet_ShouldReturnTrue():
     yard = Yard(1)
     feet = Feet(3)
-    assert yard == feet
+    assert feet == yard

@@ -1,3 +1,7 @@
+from com.bridgelabz.quantity_measurement.inch import Inch
+from com.bridgelabz.quantity_measurement.yard import Yard
+
+
 class Feet:
 
     def __init__(self, feet):
@@ -7,5 +11,9 @@ class Feet:
         if isinstance(other, Feet):
             if other.feet == self.feet:
                 return True
+        elif isinstance(other, Yard):
+            if other.yard == self.feet/3:
+                return True
+
         return False
 
