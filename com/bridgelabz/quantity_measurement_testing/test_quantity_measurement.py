@@ -26,7 +26,7 @@ def yard_object():
     (yard_object, yard_object),
 
 ])
-def test_GivenTwoSameInstanceWithSameValue_WhenCompared_ShouldReturnExpected(object1, object2):
+def test_GivenTwoSameInstanceWithSameValue_WhenCompared_ShouldReturnTrue(object1, object2):
     assert object1 == object2
 
 
@@ -36,24 +36,30 @@ def test_GivenTwoSameInstanceWithSameValue_WhenCompared_ShouldReturnExpected(obj
     (feet_object, yard_object),
     (inch_object, yard_object),
 ])
-def test_GivenTwoDifferentInstanceWithSameValue_WhenCompared_ShouldReturnExpected(obj1, obj2):
+def test_GivenTwoDifferentInstanceWithSameValue_WhenCompared_ShouldReturnFalse(obj1, obj2):
     assert obj1 != obj2
 
 
 # checks if the instances are same but values are different
-def test_WhenGivenTwoFeetInstancesButDifferentValues_ShouldRaiseException():
+def test_GivenTwoFeetInstancesButDifferentValues_WhenCompared_ShouldReturnFalse():
     first_feet = Feet(2)
     second_feet = Feet(1)
     assert first_feet != second_feet
 
 
-def test_WhenGivenTwoInchInstancesButDifferentValues_ShouldRaiseException():
+def test_GivenTwoInchInstancesButDifferentValues_WhenCompared_ShouldReturnFalse():
     first_inch = Inch(2)
     second_inch = Inch(1)
     assert first_inch != second_inch
 
 
-def test_WhenGivenTwoYardInstancesButDifferentValues_ShouldRaiseException():
+def test_GivenTwoYardInstancesButDifferentValues_WhenCompared_ShouldReturnFalse():
     first_yard = Yard(2)
     second_yard = Yard(1)
     assert first_yard != second_yard
+
+
+def test_GivenFeetAndYardInstance_WhenCompared_IfYardIsThriceOfFeet_ShouldReturnTrue():
+    yard = Yard(1)
+    feet = Feet(3)
+    assert yard == feet
