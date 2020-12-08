@@ -9,5 +9,9 @@ class Yard:
         if isinstance(other, Inch):
             if other.inch == self.yard * 36:
                 return True
+        from com.bridgelabz.quantity_measurement.feet import Feet
+        if isinstance(other, Feet):
+            if other.feet == self.yard*3:
+                return True
 
         return False

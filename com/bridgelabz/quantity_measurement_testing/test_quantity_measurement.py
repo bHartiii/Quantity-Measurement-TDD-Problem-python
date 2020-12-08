@@ -86,6 +86,7 @@ def test_GivenYardAndInchInstance_WhenCompared_If36InchesAreOneYard_ShouldReturn
     yard = Yard(1)
     assert inch == yard
 
+
 # checks if 1yd is equals to 3ft or not
 def test_GivenYardAndFeetInstance_WhenCompared_IfOneYardIs3Feet_ShouldReturnTrue():
     feet = Feet(3)
