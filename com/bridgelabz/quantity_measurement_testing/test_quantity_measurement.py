@@ -10,27 +10,34 @@ from com.bridgelabz.quantity_measurement.quantity_measurment_error import Quanti
 def feet_object():
     return Feet(1.0)
 
-
+@pytest.fixture
 def inch_object():
     return Inch(1.0)
 
-
+@pytest.fixture
 def yard_object():
     return Yard(1.0)
 
 
-# check if given instances with same value are same or not
+# check if given same instances with same value are equal or not
 @pytest.mark.parametrize("object1, object2", [
-    (feet_object, inch_object),
-    (feet_object, yard_object),
-    (inch_object, yard_object),
     (feet_object, feet_object),
     (inch_object, inch_object),
     (yard_object, yard_object),
 
 ])
-def test_GivenTwoInstanceWithSameValue_WhenCompared_ShouldReturnExpected(object1, object2):
+def test_GivenTwoSameInstanceWithSameValue_WhenCompared_ShouldReturnExpected(object1, object2):
     assert object1 == object2
+
+
+# check if given different instances with same value are equal or not
+@pytest.mark.parametrize("obj1, obj2", [
+    (feet_object, inch_object),
+    (feet_object, yard_object),
+    (inch_object, yard_object),
+])
+def test_GivenTwoDifferentInstanceWithSameValue_WhenCompared_ShouldReturnExpected(obj1, obj2):
+    assert obj1 != obj2
 
 
 # checks if the instances are same but values are different
@@ -50,9 +57,3 @@ def test_WhenGivenTwoYardInstancesButDifferentValues_ShouldRaiseException():
     first_yard = Yard(2)
     second_yard = Yard(1)
     assert first_yard != second_yard
-
-
-# def test_WhenGivenSameInstancesButDifferentValues_ShouldRaiseException2(feet_object, inch_object):
-#     # first_feet = feet_object
-#     # second_feet = inch_object
-#     assert feet_object == inch_object
