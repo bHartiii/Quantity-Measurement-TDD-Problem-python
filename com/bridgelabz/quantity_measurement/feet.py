@@ -14,6 +14,9 @@ class Feet:
         elif isinstance(other, Yard):
             if other.yard == self.feet/3:
                 return True
+        elif isinstance(other, Inch):
+            if other.inch == self.feet*12:
+                return True
 
         return False
 
