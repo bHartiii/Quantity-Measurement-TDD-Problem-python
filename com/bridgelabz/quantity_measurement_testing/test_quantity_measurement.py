@@ -59,7 +59,15 @@ def test_GivenTwoYardInstancesButDifferentValues_WhenCompared_ShouldReturnFalse(
     assert first_yard != second_yard
 
 
+# checks if 3ft is equals to 1yd or not
 def test_GivenFeetAndYardInstance_WhenCompared_IfYardIsThriceOfFeet_ShouldReturnTrue():
     yard = Yard(1)
     feet = Feet(3)
     assert feet == yard
+
+
+# checks if 1ft is equals to 12Inches or not
+def test_GivenFeetAndInchInstance_WhenCompared_IfFeetIs12TimesOfInches_ShouldReturnTrue():
+    inch = Inch(12)
+    feet = Feet(1)
+    assert feet == inch
