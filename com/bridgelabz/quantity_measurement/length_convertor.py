@@ -1,3 +1,5 @@
+from enum import Enum
+
 from com.bridgelabz.quantity_measurement.length_type import Lengths
 
 

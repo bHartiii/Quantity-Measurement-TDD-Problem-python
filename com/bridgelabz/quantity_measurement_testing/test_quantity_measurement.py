@@ -48,4 +48,5 @@ def test_GivenTwoEnumWithSomeValue_WhenCompared_ShouldReturn_Expected(value1, va
 
 
 def test_GivenTwoLength_WhenAdded_ShouldReturnSumInInches():
-    assert LengthAdder(2, 2).addition == 4
+    length_convertor = LengthConvertor(2, 2, Self_To_Self)
+    assert LengthAdder(length_convertor).add_length() == 4
