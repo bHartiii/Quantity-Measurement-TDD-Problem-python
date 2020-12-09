@@ -3,16 +3,18 @@ import pytest
 from com.bridgelabz.quantity_measurement.feet import Feet
 from com.bridgelabz.quantity_measurement.inch import Inch
 from com.bridgelabz.quantity_measurement.yard import Yard
-from com.bridgelabz.quantity_measurement.quantity_measurment_error import QuantityMeasurementError
+# from com.bridgelabz.quantity_measurement.quantity_measurement_error import QuantityMeasurementError
 
 
 @pytest.fixture
 def feet_object():
     return Feet(1.0)
 
+
 @pytest.fixture
 def inch_object():
     return Inch(1.0)
+
 
 @pytest.fixture
 def yard_object():
@@ -31,13 +33,13 @@ def test_GivenTwoSameInstanceWithSameValue_WhenCompared_ShouldReturnTrue(object1
 
 
 # check if given different instances with same value are equal or not
-@pytest.mark.parametrize("obj1, obj2", [
+@pytest.mark.parametrize("object1, object2", [
     (feet_object, inch_object),
     (feet_object, yard_object),
     (inch_object, yard_object),
 ])
-def test_GivenTwoDifferentInstanceWithSameValue_WhenCompared_ShouldReturnFalse(obj1, obj2):
-    assert obj1 != obj2
+def test_GivenTwoDifferentInstanceWithSameValue_WhenCompared_ShouldReturnFalse(object1, object2):
+    assert object1 != object2
 
 
 # checks if the instances are same but values are different
