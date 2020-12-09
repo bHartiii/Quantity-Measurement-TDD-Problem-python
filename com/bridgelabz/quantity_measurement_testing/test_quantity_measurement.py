@@ -50,3 +50,8 @@ def test_GivenTwoEnumWithSomeValue_WhenCompared_ShouldReturn_Expected(value1, va
 def test_GivenTwoSameLengthTypes_WhenAdded_ShouldReturnSumInInches():
     length_convertor = LengthConvertor(2, 2, Self_To_Self)
     assert LengthAdder(length_convertor).add_length() == 4
+
+
+def test_GivenFeetAndInchLengthTypes_WhenAdded_ShouldReturnSumInInches():
+    length_convertor = LengthConvertor(1, 2, Feet_To_Inch)
+    assert LengthAdder(length_convertor).add_length() == 14
