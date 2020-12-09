@@ -13,6 +13,8 @@ Yard_To_Feet = "Yard_To_Feet"
 Feet_To_Yard = "Feet_To_Yard"
 Yard_To_Inch = "Yard_To_Inch"
 Inch_To_Yard = "Inch_To_Yard"
+Inch_To_Centimeter = "Inch_To_Centimeter"
+Centimeter_To_Inch = "Centimeter_To_Inch"
 
 
 # check if given two enum members with some value are equal or not
@@ -35,6 +37,11 @@ Inch_To_Yard = "Inch_To_Yard"
     (1.0, 12.5, Inch_To_Yard, False),
     (1, 12, Feet_To_Inch, True),
     (1, 20, Feet_To_Inch, False),
+    (1, 2, Inch_To_Centimeter, False),
+    (2, 5, Inch_To_Centimeter, True),
+    (1, 2, Centimeter_To_Inch, False),
+    (5, 2, Centimeter_To_Inch, True),
+
 ])
 def test_GivenTwoEnumWithSomeValue_WhenCompared_ShouldReturn_Expected(value1, value2, converter, expected):
     assert LengthConvertor(value1, value2, converter).__eq__(Lengths) == expected
