@@ -6,6 +6,9 @@ from com.bridgelabz.quantity_measurement.length_type import Lengths
 class LengthConvertor:
 
     def __init__(self, value1, value2, convertor):
+        if type(value1) != float and type(value2) != float:
+            value1 = float(value1)
+            value2 = float(value2)
         self.value1 = value1
         self.value2 = value2
         self.convertor = convertor
