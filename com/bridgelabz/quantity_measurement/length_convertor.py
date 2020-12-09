@@ -20,5 +20,7 @@ class LengthConvertor:
             Lengths.Inch_To_Yard.name: Lengths.Inch_To_Yard.value,
             Lengths.Inch_To_Feet.name: Lengths.Inch_To_Feet.value,
             Lengths.Yard_To_Feet.name: Lengths.Yard_To_Feet.value,
+            Lengths.Inch_To_Centimeter.name: Lengths.Inch_To_Centimeter.value,
+            Lengths.Centimeter_To_Inch.name: Lengths.Centimeter_To_Inch.value,
         }
         return self.value1 * switcher.get(self.convertor) == self.value2

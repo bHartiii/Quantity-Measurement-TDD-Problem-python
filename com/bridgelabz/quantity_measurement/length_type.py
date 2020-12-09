@@ -9,3 +9,5 @@ class Lengths(enum.Enum):
     Feet_To_Yard = 1/3
     Yard_To_Inch = 36
     Inch_To_Yard = 1/36
+    Inch_To_Centimeter = 5/2
+    Centimeter_To_Inch = 2/5
