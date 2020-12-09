@@ -1,6 +1,6 @@
 import pytest
 
-
+from com.bridgelabz.quantity_measurement.length_adder import LengthAdder
 from com.bridgelabz.quantity_measurement.length_type import Lengths
 from com.bridgelabz.quantity_measurement.length_convertor import LengthConvertor
 from com.bridgelabz.quantity_measurement.quantity_measurement_error import QuantityMeasurementError
@@ -46,3 +46,6 @@ Centimeter_To_Inch = "Centimeter_To_Inch"
 def test_GivenTwoEnumWithSomeValue_WhenCompared_ShouldReturn_Expected(value1, value2, converter, expected):
     assert LengthConvertor(value1, value2, converter).__eq__(Lengths) == expected
 
+
+def test_GivenTwoLength_WhenAdded_ShouldReturnSumInInches():
+    assert LengthAdder(2, 2).addition == 4
