@@ -1,5 +1,3 @@
-from enum import Enum
-
 from com.bridgelabz.quantity_measurement.length_type import Lengths
 
 
@@ -14,22 +12,13 @@ class LengthConvertor:
         self.convertor = convertor
 
     def __eq__(self, other):
-        if self.convertor == Lengths.Self_To_Self.name:
-            return self.value1 * Lengths.Self_To_Self.value == self.value2
-        if self.convertor == Lengths.Feet_To_Inch.name:
-            return self.value1 * Lengths.Feet_To_Inch.value == self.value2
-        if self.convertor == Lengths.Feet_To_Yard.name:
-            return self.value1 * Lengths.Feet_To_Yard.value == self.value2
-        if self.convertor == Lengths.Yard_To_Inch.name:
-            return self.value1 * Lengths.Yard_To_Inch.value == self.value2
-        if self.convertor == Lengths.Inch_To_Yard.name:
-            return self.value1 * Lengths.Inch_To_Yard.value == self.value2
-        if self.convertor == Lengths.Inch_To_Feet.name:
-            return self.value1 * Lengths.Inch_To_Feet.value == self.value2
-        if self.convertor == Lengths.Yard_To_Feet.name:
-            return self.value1 * Lengths.Yard_To_Feet.value == self.value2
-        return False
-
-# if __name__ == "__main__":
-#     length = LengthConvertor(1.0, 1, "Feet_To_Feet")
-#     print(length.__eq__(Enum))
+        switcher = {
+            Lengths.Self_To_Self.name: Lengths.Self_To_Self.value,
+            Lengths.Feet_To_Inch.name: Lengths.Feet_To_Inch.value,
+            Lengths.Feet_To_Yard.name: Lengths.Feet_To_Yard.value,
+            Lengths.Yard_To_Inch.name: Lengths.Yard_To_Inch.value,
+            Lengths.Inch_To_Yard.name: Lengths.Inch_To_Yard.value,
+            Lengths.Inch_To_Feet.name: Lengths.Inch_To_Feet.value,
+            Lengths.Yard_To_Feet.name: Lengths.Yard_To_Feet.value,
+        }
+        return self.value1 * switcher.get(self.convertor) == self.value2
