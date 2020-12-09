@@ -1,96 +1,39 @@
 import pytest
 
-from com.bridgelabz.quantity_measurement.feet import Feet
-from com.bridgelabz.quantity_measurement.inch import Inch
-from com.bridgelabz.quantity_measurement.yard import Yard
-# from com.bridgelabz.quantity_measurement.quantity_measurement_error import QuantityMeasurementError
+
+from com.bridgelabz.quantity_measurement.length_type import Lengths
+from com.bridgelabz.quantity_measurement.length_convertor import LengthConvertor
+from com.bridgelabz.quantity_measurement.quantity_measurement_error import QuantityMeasurementError
+
+# convertors to compare one length type to other
+Self_To_Self = "Self_To_Self"
+Inch_To_Feet = "Inch_To_Feet"
+Feet_To_Inch = "Feet_To_Inch"
+Yard_To_Feet = "Yard_To_Feet"
+Feet_To_Yard = "Feet_To_Yard"
+Yard_To_Inch = "Yard_To_Inch"
+Inch_To_Yard = "Inch_To_Yard"
 
 
-@pytest.fixture
-def feet_object():
-    return Feet(1.0)
-
-
-@pytest.fixture
-def inch_object():
-    return Inch(1.0)
-
-
-@pytest.fixture
-def yard_object():
-    return Yard(1.0)
-
-
-# check if given same instances with same value are equal or not
-@pytest.mark.parametrize("object1, object2", [
-    (feet_object, feet_object),
-    (inch_object, inch_object),
-    (yard_object, yard_object),
-
+# check if given two enum members with some value are equal or not
+@pytest.mark.parametrize("value1, value2, converter, expected", [
+    (1.0, 1.0, Self_To_Self, True),
+    (2.0, 1.0, Self_To_Self, False),
+    (1.0, 1.0, Feet_To_Inch, False),
+    (1.0, 1.0, Feet_To_Yard, False),
+    (1.0, 1.0, Inch_To_Yard, False),
+    (3.0, 1.0, Feet_To_Yard, True),
+    (1.0, 12.0, Feet_To_Inch, True),
+    (1.0, 36.0, Yard_To_Inch, True),
+    (36.0, 1.0, Inch_To_Yard, True),
+    (1.0, 3.0, Yard_To_Feet, True),
+    (1.0, 12.5, Feet_To_Inch, False),
+    (1.0, 12.5, Yard_To_Feet, False),
+    (1.0, 12.5, Feet_To_Yard, False),
+    (1.0, 12.5, Yard_To_Inch, False),
+    (1.0, 12.5, Inch_To_Feet, False),
+    (1.0, 12.5, Inch_To_Yard, False),
 ])
-def test_GivenTwoSameInstanceWithSameValue_WhenCompared_ShouldReturnTrue(object1, object2):
-    assert object1 == object2
+def test_GivenTwoEnumWithSomeValue_WhenCompared_ShouldReturn_Expected(value1, value2, converter, expected):
+    assert LengthConvertor(value1, value2, converter).__eq__(Lengths) == expected
 
-
-# check if given different instances with same value are equal or not
-@pytest.mark.parametrize("object1, object2", [
-    (feet_object, inch_object),
-    (feet_object, yard_object),
-    (inch_object, yard_object),
-])
-def test_GivenTwoDifferentInstanceWithSameValue_WhenCompared_ShouldReturnFalse(object1, object2):
-    assert object1 != object2
-
-
-# checks if the instances are same but values are different
-def test_GivenTwoFeetInstancesButDifferentValues_WhenCompared_ShouldReturnFalse():
-    first_feet = Feet(2)
-    second_feet = Feet(1)
-    assert first_feet != second_feet
-
-
-def test_GivenTwoInchInstancesButDifferentValues_WhenCompared_ShouldReturnFalse():
-    first_inch = Inch(2)
-    second_inch = Inch(1)
-    assert first_inch != second_inch
-
-
-def test_GivenTwoYardInstancesButDifferentValues_WhenCompared_ShouldReturnFalse():
-    first_yard = Yard(2)
-    second_yard = Yard(1)
-    assert first_yard != second_yard
-
-
-# checks if 3ft is equals to 1yd or not
-def test_GivenFeetAndYardInstance_WhenCompared_IfYardIsThriceOfFeet_ShouldReturnTrue():
-    yard = Yard(1)
-    feet = Feet(3)
-    assert feet == yard
-
-
-# checks if 1ft is equals to 12Inches or not
-def test_GivenFeetAndInchInstance_WhenCompared_IfFeetIs12TimesOfInches_ShouldReturnTrue():
-    inch = Inch(12)
-    feet = Feet(1)
-    assert feet == inch
-
-
-# checks if 1yd is equals to 36in or not
-def test_GivenYardAndInchInstance_WhenCompared_IfYardIs36TimesOfInches_ShouldReturnTrue():
-    inch = Inch(36)
-    yard = Yard(1)
-    assert yard == inch
-
-
-# checks if 36in is equals to 1yd or not
-def test_GivenYardAndInchInstance_WhenCompared_If36InchesAreOneYard_ShouldReturnTrue():
-    inch = Inch(36)
-    yard = Yard(1)
-    assert inch == yard
-
-
-# checks if 1yd is equals to 3ft or not
-def test_GivenYardAndFeetInstance_WhenCompared_IfOneYardIs3Feet_ShouldReturnTrue():
-    feet = Feet(3)
-    yard = Yard(1)
-    assert yard == feet
