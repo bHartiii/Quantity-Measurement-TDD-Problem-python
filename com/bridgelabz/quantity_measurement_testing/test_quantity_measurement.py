@@ -33,6 +33,7 @@ Inch_To_Yard = "Inch_To_Yard"
     (1.0, 12.5, Yard_To_Inch, False),
     (1.0, 12.5, Inch_To_Feet, False),
     (1.0, 12.5, Inch_To_Yard, False),
+    (1, 1, Feet_To_Inch, True),
 ])
 def test_GivenTwoEnumWithSomeValue_WhenCompared_ShouldReturn_Expected(value1, value2, converter, expected):
     assert LengthConvertor(value1, value2, converter).__eq__(Lengths) == expected

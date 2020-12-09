@@ -26,3 +26,7 @@ class LengthConvertor:
         if self.convertor == Lengths.Yard_To_Feet.name:
             return self.value1 * Lengths.Yard_To_Feet.value == self.value2
         return False
+
+# if __name__ == "__main__":
+#     length = LengthConvertor(1.0, 1, "Feet_To_Feet")
+#     print(length.__eq__(Enum))
