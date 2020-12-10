@@ -1,6 +1,5 @@
 import pytest
 
-
 from com.bridgelabz.quantity_measurement.length_type import Lengths
 from com.bridgelabz.quantity_measurement.quantity_measurement import LengthConvertor
 from com.bridgelabz.quantity_measurement.quantity_measurement_error import QuantityMeasurementError
@@ -41,3 +40,7 @@ def test_GivenTwoEnumWithSomeValue_WhenCompared_ShouldReturn_True(value1, unit1,
 ])
 def test_GivenTwoEnumWithSomeValue_WhenCompared_ShouldReturn_False(value1, unit1, value2, unit2):
     assert LengthConvertor(value1, unit1) != LengthConvertor(value2, unit2)
+
+
+def test_GivenTwoEnumWithSomeValue_WhenAdded_ShouldReturn_Expected(value1, unit1, value2, unit2, expected):
+    assert LengthConvertor(value1, unit1) + LengthConvertor(value2, unit2 == expected
