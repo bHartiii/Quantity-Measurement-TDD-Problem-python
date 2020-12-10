@@ -19,7 +19,7 @@ class Volume(enum.Enum):
     # units for volume
     LITRE = 1
     GALLON = 3.78
-    ML = 100.1
+    ML = 0.001
 
     def __init__(self, unit):
         self.unit = unit
