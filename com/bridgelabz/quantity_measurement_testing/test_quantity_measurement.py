@@ -43,14 +43,14 @@ def test_GivenTwoEnumWithSomeValue_WhenCompared_ShouldReturn_False(value1, unit1
     assert UnitConvertor(value1, unit1) != UnitConvertor(value2, unit2)
 
 
-# checks if two length type is added then sun in inches is equal or not
+# checks if two length type is added then sum in inches is matched or not
 @pytest.mark.parametrize("value1, unit1, value2, unit2, expected", [
     (2.0, Length.INCH, 2.0, Length.INCH, 4),
     (1.0, Length.FEET, 2.0, Length.INCH, 14),
     (1.0, Length.FEET, 1.0, Length.FEET, 24),
     (2.0, Length.INCH, 2.5, Length.CM, 3),
 ])
-def test_GivenTwoEnumWithSomeValue_WhenAdded_ShouldReturn_Expected(value1, unit1, value2, unit2, expected):
+def test_GivenTwoLengthWithSomeValue_WhenAdded_ShouldReturn_Expected(value1, unit1, value2, unit2, expected):
     assert UnitConvertor(value1, unit1) + UnitConvertor(value2, unit2) == expected
 
 
@@ -86,10 +86,24 @@ def test_GivenTwoEnumWithSomeValue_WhenCompared_IfEqual_ShouldRaise_True(value1,
     (1000.0, Volume.ML, 2.0, Volume.LITRE),
     (2.0, Volume.GALLON, 3.78, Volume.LITRE),
 ])
-def test_GivenTwoEnumWithSomeValue_WhenCompared_IfEqual_ShouldRaise_True(value1, unit1, value2, unit2):
+def test_GivenTwoVolumeWithSomeValue_WhenCompared_IfEqual_ShouldRaise_True(value1, unit1, value2, unit2):
     assert UnitConvertor(value1, unit1) != UnitConvertor(value2, unit2)
 
 
+# checks if the addition is valid or not(EX : Addition of litre to inch is invalid)
+@pytest.mark.parametrize("value1, unit1, value2, unit2, expected", [
+    (1.0, Length.INCH, 1.0, Volume.LITRE, QuantityMeasurementError),
+    (1.0, Length.FEET, 1.0, Volume.LITRE, QuantityMeasurementError),
+    (1.0, Length.YARD, 1.0, Volume.LITRE, QuantityMeasurementError),
+    (1.0, Length.CM, 1.0, Volume.GALLON, QuantityMeasurementError),
+    (1.0, Length.CM, 1.0, Volume.ML, QuantityMeasurementError),
+])
+def test_GivenTwoEnumWithSomeValue_WhenAdded_IfInvalid_ShouldRaiseException(value1, unit1, value2, unit2, expected):
+    with pytest.raises(expected):
+        return UnitConvertor(value1, unit1) + UnitConvertor(value2, unit2)
+
+
+# check if two volume are added then sum is matched or not
 @pytest.mark.parametrize("value1, unit1, value2, unit2 ,expected", [
     (1.0, Volume.LITRE, 2.0, Volume.LITRE, 3.0),
     (1.0, Volume.GALLON, 2.0, Volume.GALLON, 11.34),
@@ -99,3 +113,4 @@ def test_GivenTwoEnumWithSomeValue_WhenCompared_IfEqual_ShouldRaise_True(value1,
 ])
 def test_GivenTwoVolumeUnitsWithSomeValue_WhenAdded_ShouldReturn_Expected(value1, unit1, value2, unit2, expected):
     assert UnitConvertor(value1, unit1) + UnitConvertor(value2, unit2) == expected
+
