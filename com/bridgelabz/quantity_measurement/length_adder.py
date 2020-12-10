@@ -6,13 +6,8 @@ class LengthAdder:
         self.object = obj
 
     def add_length_in_inches(self, length_type1, length_type2):
-        if self.object.convertor == Lengths.Self_To_Self.name:
-            sum = self.object.value1 + self.object.value2
-        if self.object.convertor == Lengths.Feet_To_Inch.name:
-            sum = self.object.value1 * Lengths.Feet_To_Inch.value + self.object.value2
-        return sum
-
-
-# if __name__ == "__main__":
-#     length = LengthConvertor(1,2,"Feet_To_Inch")
-#     print(LengthAdder(length).add_length())
+        if length_type1 == length_type2:
+            sum_inches = (self.object.value1 + self.object.value2)*self.object.switcher.get(self.object.convertor)
+        if length_type1 == "feet" and length_type2 == "inch":
+            sum_inches = self.object.value1 * self.object.switcher.get(self.object.convertor) + self.object.value2
+        return sum_inches

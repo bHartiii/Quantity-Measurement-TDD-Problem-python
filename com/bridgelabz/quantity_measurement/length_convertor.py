@@ -14,7 +14,7 @@ class LengthConvertor:
         self.convertor = convertor
 
     def __eq__(self, other):
-        switcher = {
+        self.switcher = {
             Lengths.Self_To_Self.name: Lengths.Self_To_Self.value,
             Lengths.Feet_To_Inch.name: Lengths.Feet_To_Inch.value,
             Lengths.Feet_To_Yard.name: Lengths.Feet_To_Yard.value,
@@ -25,4 +25,4 @@ class LengthConvertor:
             Lengths.Inch_To_Centimeter.name: Lengths.Inch_To_Centimeter.value,
             Lengths.Centimeter_To_Inch.name: Lengths.Centimeter_To_Inch.value,
         }
-        return self.value1 * switcher.get(self.convertor) == self.value2
+        return self.value1 * self.switcher.get(self.convertor) == self.value2
