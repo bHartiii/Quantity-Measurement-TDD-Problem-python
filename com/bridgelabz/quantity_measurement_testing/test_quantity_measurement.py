@@ -78,3 +78,13 @@ def test_GivenTwoEnumWithSomeValue_WhenCompared_IfInvalid_ShouldRaiseException(v
 def test_GivenTwoEnumWithSomeValue_WhenCompared_IfEqual_ShouldRaise_True(value1, unit1, value2, unit2):
     assert UnitConvertor(value1, unit1) == UnitConvertor(value2, unit2)
 
+
+@pytest.mark.parametrize("value1, unit1, value2, unit2", [
+    (1.0, Volume.LITRE, 2.0, Volume.LITRE),
+    (1.0, Volume.GALLON, 2.0, Volume.GALLON),
+    (1.0, Volume.ML, 2.0, Volume.ML),
+    (1000.0, Volume.ML, 2.0, Volume.LITRE),
+    (2.0, Volume.GALLON, 3.78, Volume.LITRE),
+])
+def test_GivenTwoEnumWithSomeValue_WhenCompared_IfEqual_ShouldRaise_True(value1, unit1, value2, unit2):
+    assert UnitConvertor(value1, unit1) != UnitConvertor(value2, unit2)
