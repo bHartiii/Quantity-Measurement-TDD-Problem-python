@@ -42,5 +42,11 @@ def test_GivenTwoEnumWithSomeValue_WhenCompared_ShouldReturn_False(value1, unit1
     assert LengthConvertor(value1, unit1) != LengthConvertor(value2, unit2)
 
 
+@pytest.mark.parametrize("value1, unit1, value2, unit2, expected", [
+    (2.0, Lengths.INCH, 2.0, Lengths.INCH, 4),
+    (1.0, Lengths.FEET, 2.0, Lengths.INCH, 14),
+    (1.0, Lengths.FEET, 1.0, Lengths.FEET, 24),
+    (2.0, Lengths.INCH, 2.5, Lengths.CM, 3),
+])
 def test_GivenTwoEnumWithSomeValue_WhenAdded_ShouldReturn_Expected(value1, unit1, value2, unit2, expected):
-    assert LengthConvertor(value1, unit1) + LengthConvertor(value2, unit2 == expected
+    assert LengthConvertor(value1, unit1) + LengthConvertor(value2, unit2) == expected

@@ -10,3 +10,8 @@ class LengthConvertor:
                 return True
             else:
                 return False
+
+    def __add__(self, other):
+        if isinstance(other, LengthConvertor):
+            return self.ob.convert_into_inch(self.value)+other.ob.convert_into_inch(other.value)
+
