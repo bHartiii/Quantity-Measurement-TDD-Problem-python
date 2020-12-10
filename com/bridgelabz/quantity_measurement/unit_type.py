@@ -12,3 +12,6 @@ class Lengths(enum.Enum):
 
     def convert_into_inch(self, value):
         return self.unit * value
+
+
+
