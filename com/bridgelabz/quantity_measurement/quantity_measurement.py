@@ -20,4 +20,7 @@ class UnitConvertor:
 
     def __add__(self, other):
         if isinstance(other, UnitConvertor):
-            return self.ob.convert_into_base(self.value) + other.ob.convert_into_base(other.value)
+            try:
+                return self.ob.convert_into_base(self.value) + other.ob.convert_into_base(other.value)
+            except QuantityMeasurementError("Invalid units addition"):
+                raise QuantityMeasurementError("Invalid units addition")
