@@ -15,6 +15,9 @@ Yard_To_Inch = "Yard_To_Inch"
 Inch_To_Yard = "Inch_To_Yard"
 Inch_To_Centimeter = "Inch_To_Centimeter"
 Centimeter_To_Inch = "Centimeter_To_Inch"
+ft = "feet"
+inch = "inch"
+cm = "centimeter"
 
 
 # check if given two enum members with some value are equal or not
@@ -49,9 +52,14 @@ def test_GivenTwoEnumWithSomeValue_WhenCompared_ShouldReturn_Expected(value1, va
 
 def test_GivenTwoSameLengthTypes_WhenAdded_ShouldReturnSumInInches():
     length_convertor = LengthConvertor(2, 2, Self_To_Self)
-    assert LengthAdder(length_convertor).add_length() == 4
+    assert LengthAdder(length_convertor).add_length_in_inches(inch, inch) == 4
 
 
 def test_GivenFeetAndInchLengthTypes_WhenAdded_ShouldReturnSumInInches():
     length_convertor = LengthConvertor(1, 2, Feet_To_Inch)
-    assert LengthAdder(length_convertor).add_length() == 14
+    assert LengthAdder(length_convertor).add_length_in_inches(ft, inch) == 14
+
+
+def test_GivenTwoFeetLengthTypes_WhenAdded_ShouldReturnSumInInches():
+    length_convertor = LengthConvertor(1, 1, Self_To_Self)
+    assert LengthAdder(length_convertor).add_length_in_inches(ft, ft) == 24
