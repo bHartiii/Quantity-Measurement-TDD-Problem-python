@@ -37,6 +37,7 @@ def test_GivenTwoEnumWithSomeValue_WhenCompared_ShouldReturn_True(value1, unit1,
     (3.0, Lengths.FEET, 3.0, Lengths.YARD),
     (2.0, Lengths.INCH, 2.0, Lengths.CM),
     (5.0, Lengths.CM, 5.0, Lengths.INCH),
+    (5, Lengths.CM, 5, Lengths.INCH),
 ])
 def test_GivenTwoEnumWithSomeValue_WhenCompared_ShouldReturn_False(value1, unit1, value2, unit2):
     assert LengthConvertor(value1, unit1) != LengthConvertor(value2, unit2)
