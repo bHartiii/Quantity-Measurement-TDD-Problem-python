@@ -152,6 +152,10 @@ def test_GivenTwoVolumeUnitsWithSomeValue_WhenAdded_ShouldReturn_Expected(value1
     (1.0, Length.FEET, 1.0, Weight.KG, QuantityMeasurementError),
     (1.0, Weight.KG, 1.0, Volume.LITRE, QuantityMeasurementError),
     (1.0, Weight.TONNE, 1.0, Volume.LITRE, QuantityMeasurementError),
+    (1.0, Weight.TONNE, 1.0, Temp.F, QuantityMeasurementError),
+    (1.0, Temp.F, 1.0, Length.FEET, QuantityMeasurementError),
+    (1.0, Temp.C, 1.0, Volume.LITRE, QuantityMeasurementError),
+    (1.0, Weight.TONNE, 1.0, Temp.C, QuantityMeasurementError),
 ])
 def test_GivenTwoEnumWithSomeValue_WhenCompared_IfInvalid_ShouldRaiseException(value1, unit1, value2, unit2, expected):
     with pytest.raises(expected):
