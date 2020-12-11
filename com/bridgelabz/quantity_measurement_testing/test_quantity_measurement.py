@@ -1,6 +1,6 @@
 import pytest
 
-from com.bridgelabz.quantity_measurement.unit_type import Length, Volume, Weight
+from com.bridgelabz.quantity_measurement.unit_type import Length, Volume, Weight, Temp
 from com.bridgelabz.quantity_measurement.quantity_measurement import UnitConvertor
 from com.bridgelabz.quantity_measurement.quantity_measurement_error import QuantityMeasurementError
 
@@ -99,7 +99,7 @@ def test_GivenTwoWeightUnitsWithSomeValue_WhenCompared_ShouldReturn_True(value1,
 
 
 @pytest.mark.parametrize("value1, unit1, value2, unit2", [
-    (2.0, Temp.C, 1.0, Temp.c),
+    (2.0, Temp.C, 1.0, Temp.C),
     (200.0, Temp.F, 1.0, Temp.F),
     (2.0, Temp.C, 100.0, Temp.F),
     (212.0, Temp.F, 10.0, Temp.C),

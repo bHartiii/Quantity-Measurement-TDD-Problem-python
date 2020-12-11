@@ -1,4 +1,5 @@
 from com.bridgelabz.quantity_measurement.quantity_measurement_error import QuantityMeasurementError
+from com.bridgelabz.quantity_measurement.unit_type import Temp
 
 
 class UnitConvertor:
@@ -9,11 +10,12 @@ class UnitConvertor:
     def __eq__(self, other):
         if isinstance(other, UnitConvertor):
             if type(self.ob) == type(other.ob):
-                return self.ob.convert_into_base(self.value) == other.ob.convert_into_base(other.value)
+                return self.ob.convert(self.value) == other.ob.convert(other.value)
             raise QuantityMeasurementError("Invalid Comparison")
 
     def __add__(self, other):
         if isinstance(other, UnitConvertor):
             if type(self.ob) == type(other.ob):
-                return self.ob.convert_into_base(self.value) + other.ob.convert_into_base(other.value)
+                return self.ob.convert(self.value) + other.ob.convert(other.value)
             raise QuantityMeasurementError("Invalid addition")
+
