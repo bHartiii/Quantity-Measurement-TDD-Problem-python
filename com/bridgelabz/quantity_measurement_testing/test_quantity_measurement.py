@@ -1,6 +1,6 @@
 import pytest
 
-from com.bridgelabz.quantity_measurement.unit_type import Length, Volume
+from com.bridgelabz.quantity_measurement.unit_type import Length, Volume, Weight
 from com.bridgelabz.quantity_measurement.quantity_measurement import UnitConvertor
 from com.bridgelabz.quantity_measurement.quantity_measurement_error import QuantityMeasurementError
 
@@ -116,7 +116,7 @@ def test_GivenTwoVolumeUnitsWithSomeValue_WhenAdded_ShouldReturn_Expected(value1
 
 # checks if given weight units are equal or not
 @pytest.mark.parametrize("value1, unit1, value2, unit2", [
-    (1.0, Weight.KG, 1000.0 Weight.GM),
+    (1.0, Weight.KG, 1000.0, Weight.GM),
     (1000.0, Weight.GM, 1.0, Weight.KG),
     (1.0, Weight.TONNE, 1000.0, Weight.KG),
     (1000.0, Weight.KG, 1.0, Weight.TONNE),

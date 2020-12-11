@@ -28,3 +28,15 @@ class Volume(enum.Enum):
         return self.unit * value
 
 
+class Weight(enum.Enum):
+    KG = 1
+    GM = 0.001
+    TONNE = 1000
+
+    def __init__(self, unit):
+        self.unit = unit
+
+    def convert_into_base(self, value):
+        return self.unit * value
+
+
