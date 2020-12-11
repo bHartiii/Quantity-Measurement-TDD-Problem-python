@@ -114,3 +114,12 @@ def test_GivenTwoEnumWithSomeValue_WhenAdded_IfInvalid_ShouldRaiseException(valu
 def test_GivenTwoVolumeUnitsWithSomeValue_WhenAdded_ShouldReturn_Expected(value1, unit1, value2, unit2, expected):
     assert UnitConvertor(value1, unit1) + UnitConvertor(value2, unit2) == expected
 
+# checks if given weight units are equal or not
+@pytest.mark.parametrize("value1, unit1, value2, unit2", [
+    (1.0, Weight.KG, 1000.0 Weight.GM),
+    (1000.0, Weight.GM, 1.0, Weight.KG),
+    (1.0, Weight.TONNE, 1000.0, Weight.KG),
+    (1000.0, Weight.KG, 1.0, Weight.TONNE),
+])
+def test_GivenTwoWeightUnitsWithSomeValue_WhenCompared_ShouldReturn_True(value1, unit1, value2, unit2):
+    assert UnitConvertor(value1, unit1) == UnitConvertor(value2, unit2)
