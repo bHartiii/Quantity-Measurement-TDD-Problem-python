@@ -87,6 +87,27 @@ def test_GivenTwoWeightUnitsWithSomeValue_WhenCompared_ShouldReturn_False(value1
     assert UnitConvertor(value1, unit1) != UnitConvertor(value2, unit2)
 
 
+# checks if given temperature units are equal or not
+@pytest.mark.parametrize("value1, unit1, value2, unit2", [
+    (1.0, Temp.F, 1.0, Temp.F),
+    (1.0, Temp.C, 1.0, Temp.C),
+    (212.0, Temp.F, 100.0, Temp.C),
+    (10.0, Temp.C, 50.0, Temp.F),
+])
+def test_GivenTwoWeightUnitsWithSomeValue_WhenCompared_ShouldReturn_True(value1, unit1, value2, unit2):
+    assert UnitConvertor(value1, unit1) == UnitConvertor(value2, unit2)
+
+
+@pytest.mark.parametrize("value1, unit1, value2, unit2", [
+    (2.0, Temp.C, 1.0, Temp.c),
+    (200.0, Temp.F, 1.0, Temp.F),
+    (2.0, Temp.C, 100.0, Temp.F),
+    (212.0, Temp.F, 10.0, Temp.C),
+])
+def test_GivenTwoWeightUnitsWithSomeValue_WhenCompared_ShouldReturn_False(value1, unit1, value2, unit2):
+    assert UnitConvertor(value1, unit1) != UnitConvertor(value2, unit2)
+
+
 # checks if two length type is added then sum in inches is matched or not
 @pytest.mark.parametrize("value1, unit1, value2, unit2, expected", [
     (2.0, Length.INCH, 2.0, Length.INCH, 4),
