@@ -12,6 +12,11 @@ class Length(enum.Enum):
         self.unit = unit
 
     def convert(self, value):
+        """
+        converts the value into the base unit value
+        :param value: takes value from user
+        :return: converted value in base unit
+        """
         return self.unit * value
 
 
@@ -25,6 +30,11 @@ class Volume(enum.Enum):
         self.unit = unit
 
     def convert(self, value):
+        """
+        converts the value into the base unit value
+        :param value: takes value from user
+        :return: converted value in base unit
+        """
         return self.unit * value
 
 
@@ -37,6 +47,11 @@ class Weight(enum.Enum):
         self.unit = unit
 
     def convert(self, value):
+        """
+        converts the value into the base unit value
+        :param value: takes value from user
+        :return: converted value in base unit
+        """
         return self.unit * value
 
 
@@ -49,6 +64,11 @@ class Temp(enum.Enum):
         self.unit = unit
 
     def convert(self, value):
+        """
+        converts the value into the base unit value
+        :param value: takes value from user
+        :return: converted value in base unit
+        """
         if self.unit == Temp.C.value:
             return value*9/5 + 32
         elif self.unit == Temp.F.value:
